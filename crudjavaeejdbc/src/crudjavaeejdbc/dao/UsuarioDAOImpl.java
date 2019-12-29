@@ -12,11 +12,11 @@ import crudjavaeejdbc.model.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
 
-	private final String COMANDO_INSERIR_USUARIO = "INSERT INTO TB_USUARIO(NOME,CPF,EMAIL,TELEFONE) VALUES (?,?,?,?)";
-	private final String COMANDO_ATUALIZAR_USUARIO = "UPDATE TB_USUARIO SET NOME = ?, CPF = ?, EMAIL = ?, TELEFONE = ?, SITUACAO = ? WHERE ID = ?";
+	private final String COMANDO_INSERIR_USUARIO = "INSERT INTO TB_USUARIO(PRIMEIRONOME, ULTIMONOME, USUARIO, SENHA) VALUES (?,?,?,?)";
+	private final String COMANDO_ATUALIZAR_USUARIO = "UPDATE TB_USUARIO SET PRIMEIRONOME = ?, ULTIMONOME = ?, USUARIO = ?, SENHA = ?, SITUACAO = ? WHERE ID = ?";
 	private final String COMANDO_EXCLUIR_USUARIO = "DELETE FROM TB_USUARIO WHERE ID = ?";
-	private final String COMANDO_LISTAR_USUARIO = "SELECT ID, NOME, CPF, EMAIL, TELEFONE, SITUACAO FROM TB_USUARIO WHERE ID = ?";
-	private final String COMANDO_LISTAR_USUARIOS = "SELECT ID, NOME, CPF, EMAIL, TELEFONE, SITUACAO FROM TB_USUARIO";
+	private final String COMANDO_LISTAR_USUARIO = "SELECT ID, PRIMEIRONOME, ULTIMONOME, USUARIO, SENHA FROM TB_USUARIO WHERE ID = ?";
+	private final String COMANDO_LISTAR_USUARIOS = "SELECT ID, PRIMEIRONOME, ULTIMONOME, USUARIO, SENHA FROM TB_USUARIO";
 
 	@Override
 	public Boolean adiciona(Usuario usuario) {
@@ -27,10 +27,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			int i = 0;
 			connection = ConnectionFactory.getConnection();
 			stmt = connection.prepareStatement(sql);
-			stmt.setString(i++, usuario.getNome());
-			stmt.setString(i++, usuario.getCpf());
-			stmt.setString(i++, usuario.getEmail());
-			stmt.setString(i++, usuario.getTelefone());
+			stmt.setString(i++, usuario.getPrimeiroNome());
+			stmt.setString(i++, usuario.getUltimoNome());
+			stmt.setString(i++, usuario.getUsuario());
+			stmt.setString(i++, usuario.getSenha());
 
 			Boolean linhasInseridas = stmt.executeUpdate() > 0;
 			ConnectionFactory.closeConnection(connection, stmt);
@@ -54,11 +54,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			pstmt = connection.prepareStatement(sql);
 			int i = 0;
 
-			pstmt.setString(i++, usuario.getNome().trim());
-			pstmt.setString(i++, usuario.getCpf().trim());
-			pstmt.setString(i++, usuario.getEmail().trim());
-			pstmt.setString(i++, usuario.getTelefone().trim());
-			pstmt.setString(i++, usuario.getSituacao().trim());
+			pstmt.setString(i++, usuario.getPrimeiroNome().trim());
+			pstmt.setString(i++, usuario.getUltimoNome().trim());
+			pstmt.setString(i++, usuario.getUsuario().trim());
+			pstmt.setString(i++, usuario.getSenha().trim());
 			pstmt.setLong(i++, usuario.getId());
 
 			Boolean linhasInseridas = pstmt.executeUpdate() > 0;
@@ -109,11 +108,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 			while (resultSet.next()) {
 				usuario.setId(resultSet.getLong("id"));
-				usuario.setNome(resultSet.getString("nome"));
-				usuario.setCpf(resultSet.getString("cpf"));
-				usuario.setEmail(resultSet.getString("email"));
-				usuario.setTelefone(resultSet.getString("telefone"));
-				usuario.setSituacao(resultSet.getString("situacao"));
+				usuario.setPrimeiroNome(resultSet.getString("primeironome"));
+				usuario.setUltimoNome(resultSet.getString("ultimonome"));
+				usuario.setUsuario(resultSet.getString("usuario"));
+				usuario.setSenha(resultSet.getString("senha"));
 			}
 
 			return usuario;
@@ -143,11 +141,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			while (rs.next()) {
 				usuario = new Usuario();
 				usuario.setId(rs.getLong("id"));
-				usuario.setNome(rs.getString("nome"));
-				usuario.setCpf(rs.getString("cpf"));
-				usuario.setEmail(rs.getString("email"));
-				usuario.setTelefone(rs.getString("telefone"));
-				usuario.setSituacao(rs.getString("situacao"));
+				usuario.setPrimeiroNome(rs.getString("primeironome"));
+				usuario.setUltimoNome(rs.getString("ultimonome"));
+				usuario.setUsuario(rs.getString("usuario"));
+				usuario.setSenha(rs.getString("senha"));
 				usuarios.add(usuario);
 			}
 			return usuarios;

@@ -11,38 +11,55 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import crudjavaeejdbc.dao.UsuarioDAO;
 import crudjavaeejdbc.dao.UsuarioDAOImpl;
 import crudjavaeejdbc.model.Usuario;
 
-@WebServlet(name="Usuarios", urlPatterns = {"/UsuarioController}"})
+@WebServlet("/registrar")
 public class UsuarioController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	private static String LISTA_USUARIOS = "/listausuario.jsp";
-	
-	
+	private UsuarioDAO usuarioDAO;
+
+	public void init() {
+		usuarioDAO = new UsuarioDAOImpl();
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		registrar(req, resp);
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String forward = "";
-		String action = req.getParameter("action");
-		UsuarioDAOImpl listaUsuariosDao = new UsuarioDAOImpl(); 
-		
-		if (action.equalsIgnoreCase("listadeUsuarios")) {
-			forward = LISTA_USUARIOS;
-			req.setAttribute("usuarios", listaUsuariosDao.getUsuarios());
-		}
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher(forward);
-		//view.forward
-		
+		resp.sendRedirect("registrar/registrar.jsp");
 	}
-	
-	private void listarUsuarios(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException{
-		UsuarioDAOImpl listaUsuariosDao = new UsuarioDAOImpl(); 
-		List<Usuario> listaUsuarios = listaUsuariosDao.getUsuarios();
-		request.setAttribute("listaUsuarios", listaUsuarios);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("listausuario.jsp");
-		dispatcher.forward(request, response);
-	}
-	
 
+	private void registrar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String primeiroNome = req.getParameter("primeironome");
+		String ultimoNome = req.getParameter("ultimonome");
+		String usuario = req.getParameter("usuario");
+		String senha = req.getParameter("senha");
+
+		Usuario colaborador = new Usuario();
+		colaborador.setPrimeiroNome(primeiroNome);
+		colaborador.setUltimoNome(ultimoNome);
+		colaborador.setUsuario(usuario);
+		colaborador.setSenha(senha);
+
+		try {
+			boolean adicionouColaborador = usuarioDAO.adiciona(colaborador);
+
+			if (adicionouColaborador) {
+				req.setAttribute("NOTIFICACAO", "Colaborador Cadastrado com Sucesso !");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("registrar/registrar.jsp");
+		dispatcher.forward(req, resp);
+	}
 }

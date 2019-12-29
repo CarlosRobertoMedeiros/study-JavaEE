@@ -1,22 +1,16 @@
 package crudjavaeejdbc.model;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private String nome;
-	private String cpf;
-	private String email;
-	private String telefone;
-	private String situacao;
-
-	public Usuario(String nome, String cpf, String email, String telefone) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
-		this.telefone = telefone;
-	}
-
-	public Usuario() {}
+	private String primeiroNome;
+	private String ultimoNome;
+	private String usuario;
+	private String senha;
 
 	public Long getId() {
 		return id;
@@ -26,44 +20,36 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPrimeiroNome() {
+		return primeiroNome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPrimeiroNome(String primeiroNome) {
+		this.primeiroNome = primeiroNome;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getUltimoNome() {
+		return ultimoNome;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setUltimoNome(String ultimoNome) {
+		this.ultimoNome = ultimoNome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
@@ -93,8 +79,8 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", telefone=" + telefone
-				+ ", situacao=" + situacao + "]";
+		return "Usuario [primeiroNome=" + primeiroNome + ", ultimoNome=" + ultimoNome + ", usuario=" + usuario
+				+ ", senha=" + senha + "]";
 	}
 
 }

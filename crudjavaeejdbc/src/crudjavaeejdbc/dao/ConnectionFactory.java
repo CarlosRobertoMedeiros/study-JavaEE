@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	private static final String driver = "com.mysql.jdbc.Driver";
-	private static final String jdbcUrl = "jdbc:mysql://localhost:3306/crud";
+	private static final String jdbcUrl = "jdbc:mysql://localhost:3306/crud?useTimezone=true&serverTimezone=UTC";
 	private static final String jdbcUsername = "root";
 	private static final String jdbcPassword = "root";
 
