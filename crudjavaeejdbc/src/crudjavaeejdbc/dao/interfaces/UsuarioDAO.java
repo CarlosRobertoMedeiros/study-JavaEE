@@ -1,4 +1,4 @@
-package crudjavaeejdbc.dao;
+package crudjavaeejdbc.dao.interfaces;
 
 import java.util.List;
 

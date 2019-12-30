@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import crudjavaeejdbc.dao.interfaces.UsuarioDAO;
 import crudjavaeejdbc.model.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
