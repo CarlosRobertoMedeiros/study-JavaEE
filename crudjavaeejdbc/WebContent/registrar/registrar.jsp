@@ -15,34 +15,42 @@
         <jsp:include page="../comum/header.jsp"></jsp:include>
         <div class="container">
 
-            <h2>Cadastro de Colaborador</h2>
-            <div class="col-md-6 col-md-offset-3">
-                <div class="alert alert-success center" role="alert">
-                    <p>${NOTIFICATION}</p>
-                </div>
-
-                <form action="<%=request.getContextPath()%>/register" method="post">
-
-                    <div class="form-group">
-                        <label for="uname">Primeiro Nome:</label> <input type="text" class="form-control" placeholder="Primeiro Nome" name="primeironome" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="uname">Último Nome:</label> <input type="text" class="form-control" placeholder="Último Nome" name="ultimonome" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="uname">Usuário:</label> <input type="text" class="form-control" placeholder="Usuário" name="usuario" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="uname">Senha:</label> <input type="password" class="form-control" placeholder="Senha" name="senha" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                </form>
+            <div class="container col-md-5">
+				<div class="card" style="margin-top:60px;">
+					<div class="card-body">
+		            <h3>Registrar Usuário</h3>
+		            
+		                <!-- 
+		                <div class="alert alert-success center" role="alert">
+		                    <p>${NOTIFICATION}</p>
+		                </div>
+		                 -->
+			
+		                <form action="<%=request.getContextPath()%>/register" method="post">
+		
+		                    <div class="form-group">
+		                        <label for="uname">Primeiro Nome:</label> <input type="text" class="form-control" placeholder="Primeiro Nome" name="primeironome" required>
+		                    </div>
+		
+		                    <div class="form-group">
+		                        <label for="uname">Último Nome:</label> <input type="text" class="form-control" placeholder="Último Nome" name="ultimonome" required>
+		                    </div>
+		
+		                    <div class="form-group">
+		                        <label for="uname">Usuário:</label> <input type="text" class="form-control" placeholder="Usuário" name="usuario" required>
+		                    </div>
+		
+		                    <div class="form-group">
+		                        <label for="uname">Senha:</label> <input type="password" class="form-control" placeholder="Senha" name="senha" required>
+		                    </div>
+		
+		                    <button type="submit" class="btn btn-primary">Submit</button>
+		
+		                </form>
+		            </div>
+	           </div>
             </div>
+            
         </div>
         <jsp:include page="../comum/footer.jsp"></jsp:include>
     </body>

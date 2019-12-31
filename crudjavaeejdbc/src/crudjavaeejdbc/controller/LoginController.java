@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet{
 		
 		try {
 			if (loginDAO.usuarioEValido(colaborador)) {
-				RequestDispatcher requestDispatcher = req.getRequestDispatcher("principal/principal.jsp");
+				RequestDispatcher requestDispatcher = req.getRequestDispatcher("todo/todo-form.jsp");
 				requestDispatcher.forward(req, resp);
 			}else {
 				HttpSession sessao = req.getSession();//TODO:Implementar a Sessão
