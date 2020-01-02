@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
  pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <!DOCTYPE html>
     <html>
 
@@ -11,13 +12,15 @@
 
     <body>
 
-        <jsp:include page="../comum/header.jsp"></jsp:include>
+        <jsp:include page="../comum/header/header.jsp"></jsp:include>
         <div class="container col-md-5">
 			<div class="card" style="margin-top:60px;">
 				<div class="card-body">
 		            <h3 style="text-align:center;">App Exemplo - Logar</h3>
 		            <form action="<%=request.getContextPath()%>/login" method="post">
-		
+						<div>
+							<h2>Contexto <%=request.getContextPath()%></h2>
+						</div>
 		                <div class="form-group">
 		                    <label for="uname">Usuário:</label> <input type="text" class="form-control" placeholder="Usuário" name="usuario" required>
 		                </div>
