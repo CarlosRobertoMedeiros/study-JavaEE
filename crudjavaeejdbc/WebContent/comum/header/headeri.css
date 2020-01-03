@@ -1,12 +1,12 @@
 body{
 		font-family: 'Varela Round', sans-serif;
 	}
-	.form-control {
+	.form-controle {
 		box-shadow: none;		
 		font-weight: normal;
 		font-size: 13px;
 	}
-	.form-control:focus {
+	.form-controle:focus {
 		border-color: #33cabb;
 		box-shadow: 0 0 8px rgba(0,0,0,0.1);
 	}

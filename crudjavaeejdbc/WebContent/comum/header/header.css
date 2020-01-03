@@ -1,0 +1,9 @@
+.navbar .navbar-brand b {
+	font-weight: bold;
+	color: #33cabb !important;		
+}
+.navbar .form-wrapper .hint-text {
+		text-align: center;
+		margin-bottom: 15px;
+		font-size: 13px;
+	}
