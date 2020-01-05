@@ -34,8 +34,8 @@ public class LoginController extends HttpServlet{
 	}
 
 	private void autenticar(HttpServletRequest req, HttpServletResponse resp) {
-		String usuario = req.getParameter("usuario");
-		String senha = req.getParameter("senha");
+		String usuario = req.getParameter("inputUsuario");
+		String senha = req.getParameter("inputSenha");
 		
 		Login colaborador = new Login();
 		colaborador.setUsuario(usuario);
@@ -43,8 +43,9 @@ public class LoginController extends HttpServlet{
 		
 		try {
 			if (loginDAO.usuarioEValido(colaborador)) {
-				RequestDispatcher requestDispatcher = req.getRequestDispatcher("todo/todo-form.jsp");
-				requestDispatcher.forward(req, resp);
+				//RequestDispatcher requestDispatcher = req.getRequestDispatcher("todo/todo-form.jsp");
+				RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
+				//resp.sendRedirect("index.jsp");
 			}else {
 				HttpSession sessao = req.getSession();//TODO:Implementar a Sessão
 			}
