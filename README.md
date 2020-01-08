@@ -9,6 +9,12 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 			- Conectando a objetos usando Datasource
 			- Usando Pool de Conexão Servidor (Wildfly15)
 
+	Técnicas de JPA
+		-Básicas
+			- Implementando um CRUD de JPA
+			- Implementando um CRUD de JPA em um projeto Java EE
+
+
 
 	Implementação de Exemplos Simples de Padrões de Projetos JAVA EE
 
