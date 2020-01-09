@@ -10,9 +10,23 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 			- Usando Pool de Conexão Servidor (Wildfly15)
 
 	Técnicas de JPA
-		-Básicas
+		- Básicas
 			- Implementando um CRUD de JPA
 			- Implementando um CRUD de JPA em um projeto Java EE
+			- Utilizando o EntityManger para Gerenciar os Estados
+				- Managed
+				- Transient
+				- Detached
+
+			- Utilização das Estratégias para criação de Chave Primária
+				- Auto = Escolha do Hibernate
+				- Identity = Criação de CP por ID
+				- Sequence = Criação de CP por sequence
+				- Table = Criação de tabela de referência, resultado na tabela de historico 
+
+			- Troca de Estados no JPA
+				- método find = traz o estado para managed
+				- método merge = força insert e update
 
 
 
