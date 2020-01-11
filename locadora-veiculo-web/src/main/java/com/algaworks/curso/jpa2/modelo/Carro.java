@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,21 +20,32 @@ public class Carro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private String placa;
-	
+
 	private String cor;
-	
+
 	private String chassi;
-	
+
 	private BigDecimal valorDiaria;
-	
+
 	@ManyToOne
-	@JoinColumn(name="codigo_modelo")
+	@JoinColumn(name = "codigo_modelo")
 	private ModeloCarro modelo;
-	
+
 	@ManyToMany
 	private List<Acessorio> acessorios;
+
+	@OneToMany(mappedBy ="carro")
+	private List<Aluguel> alugueis;
+
+	public List<Aluguel> getAlugueis() {
+		return alugueis;
+	}
+
+	public void setAlugueis(List<Aluguel> alugueis) {
+		this.alugueis = alugueis;
+	}
 
 	public Long getCodigo() {
 		return codigo;

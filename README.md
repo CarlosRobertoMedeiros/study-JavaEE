@@ -29,6 +29,7 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 				- método merge = força insert e update
 
 			- Implementando os mapeamentos
+				- Um para Um(OneToOne)
 				- Um para Muitos(OneToMany)
 				- Muitos Para um (ManyToOne)
 				- Muitos Para Muitos(ManyToMany)
