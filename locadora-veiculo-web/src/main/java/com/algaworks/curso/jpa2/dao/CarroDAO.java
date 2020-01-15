@@ -17,7 +17,7 @@ public class CarroDAO implements Serializable {
 	private final static String COMANDO_JPQL_BUSCAR_TODOS_CARROS = "from Carro";
 
 	@Inject
-	EntityManager manager;
+	EntityManager manager ;
 
 	public Carro bucarPeloCodigo(Long codigo) {
 		return manager.find(Carro.class, codigo);
