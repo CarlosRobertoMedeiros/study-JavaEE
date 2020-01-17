@@ -1,6 +1,7 @@
 package com.algaworks.curso.jpa2.modelo;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_aluguel")
@@ -30,6 +33,44 @@ public class Aluguel {
 	//@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name = "codigo_apolice_seguro")
 	private ApoliceSeguro apoliceSeguro;
+	
+	@Temporal(TemporalType.DATE)
+	@Deprecated
+	private Calendar dataPedido;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Deprecated
+	private Calendar dataEntrega;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Deprecated
+	private Calendar dataDevolucao;
+
+	//TODO:CONTINUAR A PARTIR DE 5MIN DO MAPEAMENTO DE DATAS ... REVISÃO 5.3
+	
+	public Calendar getDataPedido() {
+		return dataPedido;
+	}
+
+	public void setDataPedido(Calendar dataPedido) {
+		this.dataPedido = dataPedido;
+	}
+
+	public Calendar getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(Calendar dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+
+	public Calendar getDataDevolucao() {
+		return dataDevolucao;
+	}
+
+	public void setDataDevolucao(Calendar dataDevolucao) {
+		this.dataDevolucao = dataDevolucao;
+	}
 
 	public ApoliceSeguro getApoliceSeguro() {
 		return apoliceSeguro;
