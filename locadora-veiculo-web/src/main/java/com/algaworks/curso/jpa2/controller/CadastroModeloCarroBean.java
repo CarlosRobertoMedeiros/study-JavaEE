@@ -9,8 +9,6 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.hibernate.stat.internal.CategorizedStatistics;
-
 import com.algaworks.curso.jpa2.dao.FabricanteDAO;
 import com.algaworks.curso.jpa2.modelo.Categoria;
 import com.algaworks.curso.jpa2.modelo.Fabricante;

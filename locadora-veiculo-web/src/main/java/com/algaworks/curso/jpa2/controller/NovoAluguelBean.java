@@ -47,7 +47,7 @@ public class NovoAluguelBean implements Serializable {
 	@PostConstruct
 	public void inicializar() {
 		this.limpar();
-		this.carros = carroDAO.buscarTodos();
+		this.carros = this.carroDAO.buscarTodos();
 	}
 
 	private void limpar() {

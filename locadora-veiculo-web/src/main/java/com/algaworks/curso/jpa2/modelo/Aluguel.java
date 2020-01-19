@@ -1,6 +1,7 @@
 package com.algaworks.curso.jpa2.modelo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Calendar;
 
 import javax.persistence.CascadeType;
@@ -40,11 +41,11 @@ public class Aluguel {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Deprecated
-	private Calendar dataEntrega;
+	private Date dataEntrega;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Deprecated
-	private Calendar dataDevolucao;
+	private Date dataDevolucao;
 
 	//TODO:CONTINUAR A PARTIR DE 5MIN DO MAPEAMENTO DE DATAS ... REVISÃO 5.3
 	
@@ -56,19 +57,19 @@ public class Aluguel {
 		this.dataPedido = dataPedido;
 	}
 
-	public Calendar getDataEntrega() {
+	public Date getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Calendar dataEntrega) {
+	public void setDataEntrega(Date dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public Calendar getDataDevolucao() {
+	public Date getDataDevolucao() {
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Calendar dataDevolucao) {
+	public void setDataDevolucao(Date dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
