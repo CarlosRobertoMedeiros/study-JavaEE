@@ -6,8 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +29,11 @@ public abstract class Pessoa {
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
 	private String cpf;
+	
+	/*
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
+	*/
 
 	public Long getCodigo() {
 		return codigo;
@@ -66,13 +67,13 @@ public abstract class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public Sexo getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(Sexo sexo) {
-		this.sexo = sexo;
-	}
+//	public Sexo getSexo() {
+//		return sexo;
+//	}
+//
+//	public void setSexo(Sexo sexo) {
+//		this.sexo = sexo;
+//	}
 
 	@Override
 	public int hashCode() {

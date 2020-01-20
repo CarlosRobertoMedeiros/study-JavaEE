@@ -3,7 +3,7 @@ package com.algaworks.curso.jpa2.modelo;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity(name = "TB_Motorista")
+@Entity
 @DiscriminatorValue("MOTORISTA")
 public class Motorista extends Pessoa {
 	private String numeroCNH;

@@ -1,17 +1,21 @@
 package com.algaworks.curso.jpa2.controller;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.algaworks.curso.jpa2.modelo.Motorista;
 import com.algaworks.curso.jpa2.modelo.Sexo;
 import com.algaworks.curso.jpa2.service.CadastroMotoristaService;
+import com.algaworks.curso.jpa2.service.NegocioException;
 import com.algaworks.curso.jpa2.util.jsf.FacesUtil;
 
+@Named
+@ViewScoped
 public class CadastroMotoristaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,13 +29,16 @@ public class CadastroMotoristaBean implements Serializable {
 	@PostConstruct
 	public void inicializar() {
 		this.limpar();
-		this.sexos = Arrays.asList(Sexo.values());
+		//this.sexos = Arrays.asList(Sexo.values());
 	}
 
 	public void salvar() {
-		this.cadastroMotoristaService.salvar(motorista);
-		FacesUtil.addSuccessMessage("Motorista Salvo com Sucesso !!!");
-
+		try {
+			this.cadastroMotoristaService.salvar(motorista);
+			FacesUtil.addSuccessMessage("Motorista Salvo com Sucesso !!!");
+		} catch (NegocioException e) {
+			FacesUtil.addErrorMessage(e.getMessage());
+		}
 		this.limpar();
 	}
 
@@ -51,5 +58,5 @@ public class CadastroMotoristaBean implements Serializable {
 	public List<Sexo> getSexos() {
 		return sexos;
 	}
-	//Continuar o vídeo 5.4 A partir de 10 minutos
+
 }
