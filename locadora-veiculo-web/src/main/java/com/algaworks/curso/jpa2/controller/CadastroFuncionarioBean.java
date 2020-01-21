@@ -9,23 +9,27 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.algaworks.curso.jpa2.modelo.Motorista;
+import com.algaworks.curso.jpa2.modelo.Funcionario;
 import com.algaworks.curso.jpa2.modelo.Sexo;
-import com.algaworks.curso.jpa2.service.CadastroMotoristaService;
+import com.algaworks.curso.jpa2.service.CadastroFuncionarioService;
 import com.algaworks.curso.jpa2.service.NegocioException;
 import com.algaworks.curso.jpa2.util.jsf.FacesUtil;
 
 @Named
 @ViewScoped
-public class CadastroMotoristaBean implements Serializable {
+public class CadastroFuncionarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Motorista motorista;
+	private Funcionario funcionario;
 	private List<Sexo> sexos;
 
+	public List<Sexo> getSexos() {
+		return sexos;
+	}
+
 	@Inject
-	CadastroMotoristaService cadastroMotoristaService;
+	private CadastroFuncionarioService cadastroFuncionarioService;
 
 	@PostConstruct
 	public void inicializar() {
@@ -35,29 +39,25 @@ public class CadastroMotoristaBean implements Serializable {
 
 	public void salvar() {
 		try {
-			this.cadastroMotoristaService.salvar(motorista);
-			FacesUtil.addSuccessMessage("Motorista Salvo com Sucesso !!!");
+			this.cadastroFuncionarioService.salvar(funcionario);
+			FacesUtil.addSuccessMessage("Funcionário salvo com sucesso!");
 		} catch (NegocioException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
+
 		this.limpar();
 	}
 
-	private void limpar() {
-		this.motorista = new Motorista();
-
+	public void limpar() {
+		this.funcionario = new Funcionario();
 	}
 
-	public Motorista getMotorista() {
-		return motorista;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setMotorista(Motorista motorista) {
-		this.motorista = motorista;
-	}
-
-	public List<Sexo> getSexos() {
-		return sexos;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 }
