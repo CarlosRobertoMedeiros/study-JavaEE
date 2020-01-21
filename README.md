@@ -33,6 +33,15 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 				- Um para Muitos(OneToMany)
 				- Muitos Para um (ManyToOne)
 				- Muitos Para Muitos(ManyToMany)
+			
+			- Implementando herança em Entidades
+				- Implementando SingleTable
+				- Implementando JoinTable
+			
+			- Implementando Mapeamentos em Enums
+			
+			- Implementando Consultas
+				- Utilizando JPQL
 
 
 
