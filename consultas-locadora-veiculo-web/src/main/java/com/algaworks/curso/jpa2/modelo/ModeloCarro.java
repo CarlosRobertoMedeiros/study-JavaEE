@@ -81,4 +81,12 @@ public class ModeloCarro {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "ModeloCarro [codigo=" + codigo + ", descricao=" + descricao + ", fabricante=" + fabricante
+				+ ", categoria=" + categoria + "]";
+	}
+	
+	
+
 }
