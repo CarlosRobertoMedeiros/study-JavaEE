@@ -15,9 +15,10 @@ public class CarroDAO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private final static String COMANDO_JPQL_BUSCAR_TODOS_CARROS = "from Carro";
+	private final static String COMANDO_JPQL_BUSCAR_QTDE_CARROS = "select count(c) from Carro c ";
 
 	@Inject
-	EntityManager manager ;
+	EntityManager manager;
 
 	public Carro bucarPeloCodigo(Long codigo) {
 		return manager.find(Carro.class, codigo);
@@ -29,25 +30,35 @@ public class CarroDAO implements Serializable {
 
 	@SuppressWarnings("unchecked")
 	public List<Carro> buscarTodos() {
-		return manager.createQuery(COMANDO_JPQL_BUSCAR_TODOS_CARROS).getResultList();
+		// return manager.createQuery(COMANDO_JPQL_BUSCAR_TODOS_CARROS).getResultList();
+		return manager.createNamedQuery("Carro.buscarTodos").getResultList();
 	}
-	
+
 	@Transactional
-	public void excluir(Carro carro) throws NegocioException{
+	public void excluir(Carro carro) throws NegocioException {
 		carro = this.bucarPeloCodigo(carro.getCodigo());
 		try {
 			manager.remove(carro);
 			manager.flush();
 		} catch (PersistenceException e) {
-			new NegocioException("Não Foi Possível Excluir o Carro "+ e.getMessage());
+			new NegocioException("Não Foi Possível Excluir o Carro " + e.getMessage());
 		}
-	
+
 	}
-	
+
 	public Carro buscarCarroComAcessorios(Long codigo) {
-		return (Carro) manager.createQuery("select c from Carro c JOIN c.acessorios a where c.codigo = ?")
-				.setParameter(1, codigo)
+		return manager.createNamedQuery("Carro.buscarCarrosComAcessorios", Carro.class).setParameter("codigo", codigo)
 				.getSingleResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Carro> buscarComPaginacao(int first, int pageSize) {
+		return manager.createNamedQuery("Carro.buscarTodos").setFirstResult(first).setMaxResults(pageSize)
+				.getResultList();
+	}
+
+	public Long encontrarQuantidadeDeCarros() {
+		return manager.createQuery(COMANDO_JPQL_BUSCAR_QTDE_CARROS, Long.class).getSingleResult();
 	}
 
 }
