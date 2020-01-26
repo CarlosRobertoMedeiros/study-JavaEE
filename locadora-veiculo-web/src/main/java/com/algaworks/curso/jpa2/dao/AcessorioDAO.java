@@ -15,6 +15,7 @@ public class AcessorioDAO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final String COMANDO_JPQL_LISTAR_TODOS_ACESSORIOS = "from Acessorio";
+	private static final String COMANDO_JPQL_BUSCAR_QTDE_ACESSORIOS = "select count(a) from Acessorio a";
 
 	@Inject
 	EntityManager manager;
@@ -27,6 +28,7 @@ public class AcessorioDAO implements Serializable {
 		manager.merge(acessorio);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Acessorio> buscarTodos() {
 		return manager.createQuery(COMANDO_JPQL_LISTAR_TODOS_ACESSORIOS).getResultList();
 	}
@@ -41,6 +43,17 @@ public class AcessorioDAO implements Serializable {
 			throw new NegocioException("Problema ao Excluir o Acessorio " + e.getMessage());
 		}
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Acessorio> buscarComPaginacao(int first, int pageSize) {
+		return manager.createQuery(COMANDO_JPQL_LISTAR_TODOS_ACESSORIOS).setFirstResult(first).setMaxResults(pageSize)
+				.getResultList();
+
+	}
+
+	public Long encontrarQuantidadeDeAcessorios() {
+		return manager.createQuery(COMANDO_JPQL_BUSCAR_QTDE_ACESSORIOS, Long.class).getSingleResult();
 	}
 
 }

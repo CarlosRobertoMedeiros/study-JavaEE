@@ -26,11 +26,11 @@ public class LazyCarroDataModel extends LazyDataModel<Carro> implements Serializ
 			Map<String, String> filters) {
 
 		List<Carro> carros = this.carroDAO.buscarComPaginacao(first, pageSize);
-		
+
 		this.setRowCount(this.carroDAO.encontrarQuantidadeDeCarros().intValue());
-		
+
 		return carros;
-		
+
 	}
 
 }

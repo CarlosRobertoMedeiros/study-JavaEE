@@ -15,6 +15,7 @@ public class ModeloCarroDAO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private final static String COMANDO_JPQL_BUSCAR_TODOS_MODELOS = "from ModeloCarro";
+	private final static String COMANDO_JPQL_BUSCAR_QTDE_TODOS_MODELOS = "select count(mc) from ModeloCarro mc";
 
 	@Inject
 	private EntityManager entityManager;
@@ -27,6 +28,7 @@ public class ModeloCarroDAO implements Serializable {
 		entityManager.merge(modeloCarro);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<ModeloCarro> buscarTodos() {
 		return entityManager.createQuery(COMANDO_JPQL_BUSCAR_TODOS_MODELOS).getResultList();
 	}
@@ -40,6 +42,18 @@ public class ModeloCarroDAO implements Serializable {
 		} catch (PersistenceException e) {
 			throw new NegocioException("Esse modelo não pode ser excluído " + e.getMessage());
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ModeloCarro> buscarComPaginacao(int first, int pageSize) {
+		return entityManager.createQuery(COMANDO_JPQL_BUSCAR_TODOS_MODELOS)
+				.setFirstResult(first)
+				.setMaxResults(pageSize)
+				.getResultList();	
+	}
+
+	public Long encontrarQuantidadeDeModeloDeCarros() {
+		return entityManager.createQuery(COMANDO_JPQL_BUSCAR_QTDE_TODOS_MODELOS, Long.class).getSingleResult();
 	}
 
 }

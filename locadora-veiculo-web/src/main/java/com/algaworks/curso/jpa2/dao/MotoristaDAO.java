@@ -15,6 +15,7 @@ public class MotoristaDAO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private final static String COMANDO_JPQL_BUSCAR_TODOS_MOTORISTAS = "from Motorista";
+	private final static String COMANDO_JPQL_BUSCAR_QTDE_MOTORISTAS = "select count(m) from Motorista m";
 	
 	@Inject
 	private EntityManager manager;
@@ -42,6 +43,20 @@ public class MotoristaDAO implements Serializable{
 			throw new NegocioException("Motorista não pode ser excluído !!!");
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Motorista> buscarComPaginacao(int first, int pageSize) {
+		return manager.createQuery(COMANDO_JPQL_BUSCAR_TODOS_MOTORISTAS)
+				.setFirstResult(first)
+				.setMaxResults(pageSize)
+				.getResultList();			
+	}
+
+	public Long encontrarQuantidadeDeFuncionarios() {
+		return manager.createQuery(COMANDO_JPQL_BUSCAR_QTDE_MOTORISTAS, Long.class).getSingleResult();	
+	}
+	
+	
 	
 
 }

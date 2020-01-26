@@ -15,6 +15,7 @@ public class FuncionarioDAO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private final static String COMANDO_JPQL_LISTAR_TODOS_FUNCIONARIOS = "from Funcionario";
+	private final static String COMANDO_JPQL_BUSCAR_QTDE_FUNCIONARIOS = "select count(f) from Funcionario f";
 	
 	@Inject
 	EntityManager manager;
@@ -41,6 +42,18 @@ public class FuncionarioDAO implements Serializable{
 		} catch (PersistenceException e) {
 			throw new NegocioException(e.getMessage());
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Funcionario> buscarComPaginacao(int first, int pageSize) {
+		return manager.createQuery(COMANDO_JPQL_LISTAR_TODOS_FUNCIONARIOS)
+				.setFirstResult(first)
+				.setMaxResults(pageSize)
+				.getResultList();		
+	}
+
+	public Long encontrarQuantidadeDeFuncionarios() {
+		return manager.createQuery(COMANDO_JPQL_BUSCAR_QTDE_FUNCIONARIOS, Long.class).getSingleResult();	
 	}
 	
 

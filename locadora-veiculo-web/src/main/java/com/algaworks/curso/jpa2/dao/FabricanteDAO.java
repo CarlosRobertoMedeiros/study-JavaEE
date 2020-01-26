@@ -14,6 +14,7 @@ public class FabricanteDAO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private final String COMANDO_JPQL_BUSCAR_FABRICANTES = "From Fabricante"; 
+	private final String COMANDO_JPQL_BUSCAR_QTDE_FABRICANTES = "select count(f) from Fabricante f ";
 
 	@Inject
 	private EntityManager em;
@@ -39,5 +40,16 @@ public class FabricanteDAO implements Serializable{
 
 	public Fabricante buscarPeloCodigo(Long codigo) {
 		return em.find(Fabricante.class, codigo);
+	}
+
+	public List<Fabricante> buscarComPaginacao(int first, int pageSize) {
+		return em.createQuery(COMANDO_JPQL_BUSCAR_FABRICANTES)
+				.setFirstResult(first)
+				.setMaxResults(pageSize)
+				.getResultList();
+	}
+
+	public Long encontrarQuantidadeDeFabricantes() {
+		return em.createQuery(COMANDO_JPQL_BUSCAR_QTDE_FABRICANTES, Long.class).getSingleResult();
 	}
 }
