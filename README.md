@@ -40,9 +40,32 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 			
 			- Implementando Mapeamentos em Enums
 			
+			- Trabalhando os Estados do JPA
+				Ciclo de Vida do EntityManager
+					- de New Para Managed
+						- persist() e merge()
+					- de consulta para Managed
+						- find()
+					- de Managed para Detached
+						- detach()
+					- de Managed para Managed
+						- merge()
+					- de Managed para Removed
+						- remove()
+					- de Removed para Managed
+						- persist() ou merge()
+					
+				CallBacks JPA	
+					- @PrePersist / @PostPersist
+					- @PreRemove / @PostRemove
+					- @PreUpdate / @PostUpdate
+					- @PostLoad
+				
 			- Implementando Consultas
 				- Utilizando JPQL
-
+			
+			- Implementando Consultas
+				- Utilizando Criteria
 
 
 	Implementação de Exemplos Simples de Padrões de Projetos JAVA EE
