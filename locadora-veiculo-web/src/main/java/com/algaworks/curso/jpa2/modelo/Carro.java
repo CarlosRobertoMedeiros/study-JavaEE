@@ -1,6 +1,7 @@
 package com.algaworks.curso.jpa2.modelo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,7 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_carro")
@@ -52,6 +57,28 @@ public class Carro {
 
 	@OneToMany(mappedBy ="carro")
 	private List<Aluguel> alugueis;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCriacao;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataModificacao;
+	
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Date getDataModificacao() {
+		return dataModificacao;
+	}
+
+	public void setDataModificacao(Date dataModificacao) {
+		this.dataModificacao = dataModificacao;
+	}
 
 	public List<Aluguel> getAlugueis() {
 		return alugueis;
@@ -117,6 +144,22 @@ public class Carro {
 		this.acessorios = acessorios;
 	}
 
+	/**
+	 * Métodos de CallBacks
+	 * 
+	 * */
+	@PrePersist
+	@PreUpdate
+	public void configuraDatasCriacaoeAlteracao() {
+		this.dataModificacao = new Date();
+		
+		if (this.dataCriacao == null) {
+			this.dataCriacao = new Date();
+		}
+	}
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
