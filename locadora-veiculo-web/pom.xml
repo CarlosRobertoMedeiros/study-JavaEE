@@ -11,6 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
+		<junit.version>4.10</junit.version>
 	</properties>
 	
 	<build>
@@ -83,6 +84,14 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>${mysql-connector-java.version}</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>${junit.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<!-- Repositorio PrimeFaces -->

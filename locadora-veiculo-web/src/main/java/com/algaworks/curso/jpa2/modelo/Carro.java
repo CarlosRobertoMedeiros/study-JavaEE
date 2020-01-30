@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "tb_carro")
 @NamedQueries({
-	@NamedQuery(name = "Carro.buscarTodos", query = "select c from Carro c"),
+	@NamedQuery(name = "Carro.buscarTodos", query = "select c from Carro c inner join fetch c.modelo"),
 	@NamedQuery(name = "Carro.buscarCarrosComAcessorios" , query = " select c "
 																	+ " from Carro c JOIN c.acessorios a "
 																	+ " where c.codigo = :codigo")
@@ -45,7 +45,7 @@ public class Carro {
 
 	private BigDecimal valorDiaria;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_modelo")
 	private ModeloCarro modelo;
 
