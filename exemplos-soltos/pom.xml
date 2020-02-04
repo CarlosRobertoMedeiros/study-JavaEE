@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>br.com.roberto.estudosjavaee</groupId>
-  <artifactId>consultas-locadora-veiculo-web</artifactId>
+  <groupId>br.com.roberto.jpa</groupId>
+  <artifactId>exemplossoltos</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
+
+
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
   </properties>
-	
-	<build>
-		<finalName>consultas-locadora-veiculo-web</finalName>
+  
+  	<build>
+		<finalName>exemplos-soltos</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -23,9 +23,8 @@
 			</plugin>
 		</plugins>
 	</build>
-  
-  
-  <dependencies>
+	
+	 <dependencies>
   		<!-- Núcleo do Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -50,5 +49,11 @@
 		    <version>${mysql-connector-java.version}</version>
 		</dependency>
   </dependencies>
-  
+
+
+
+
+
+
+
 </project>
