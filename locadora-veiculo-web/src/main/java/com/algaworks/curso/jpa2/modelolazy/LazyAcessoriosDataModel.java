@@ -20,7 +20,7 @@ public class LazyAcessoriosDataModel extends LazyDataModel<Acessorio> implements
 		this.acessorioDAO = acessorioDAO;
 
 	}
-
+	
 	@Override
 	public List<Acessorio> load(int first, int pageSize, String sortField, SortOrder sortOrder,
 			Map<String, String> filters) {

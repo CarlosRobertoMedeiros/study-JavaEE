@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -65,6 +66,9 @@ public class Carro {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataModificacao;
+	
+	@Lob
+	private byte[] foto;
 	
 	public Date getDataCriacao() {
 		return dataCriacao;
@@ -144,6 +148,14 @@ public class Carro {
 
 	public void setAcessorios(List<Acessorio> acessorios) {
 		this.acessorios = acessorios;
+	}
+	
+	public byte[] getFoto() {
+		return this.foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 	/**
