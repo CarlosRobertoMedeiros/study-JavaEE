@@ -23,14 +23,11 @@ public class LazyCarroDataModel extends LazyDataModel<Carro> implements Serializ
 
 	@Override
 	public List<Carro> load(int first, int pageSize, String sortField, SortOrder sortOrder,
-			Map<String, String> filters) {
-
+			Map<String, Object> filters) {
+		
 		List<Carro> carros = this.carroDAO.buscarComPaginacao(first, pageSize);
-
 		this.setRowCount(this.carroDAO.encontrarQuantidadeDeCarros().intValue());
-
 		return carros;
-
 	}
 
 }

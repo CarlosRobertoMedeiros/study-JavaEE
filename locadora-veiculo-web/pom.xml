@@ -12,7 +12,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<!-- Hibernate / JPA -->
+		<!-- 
 		<hibernate.version>4.3.11.Final</hibernate.version>
+		 -->
+		<hibernate.version>5.4.10.Final</hibernate.version>
 		
 		<!-- Omnifaces -->
 		<omnifaces.version>2.1</omnifaces.version>

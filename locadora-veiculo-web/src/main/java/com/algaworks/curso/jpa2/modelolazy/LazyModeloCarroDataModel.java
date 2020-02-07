@@ -23,14 +23,11 @@ public class LazyModeloCarroDataModel extends LazyDataModel<ModeloCarro> impleme
 
 	@Override
 	public List<ModeloCarro> load(int first, int pageSize, String sortField, SortOrder sortOrder,
-			Map<String, String> filters) {
+			Map<String, Object> filters) {
 
 		List<ModeloCarro> modeloDeCarros = this.modeloCarroDAO.buscarComPaginacao(first, pageSize);
-
 		this.setRowCount(this.modeloCarroDAO.encontrarQuantidadeDeModeloDeCarros().intValue());
-
 		return modeloDeCarros;
-
 	}
 
 }

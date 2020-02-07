@@ -25,14 +25,11 @@ public class LazyMotoristaDataModel extends LazyDataModel<Motorista> implements 
 
 	@Override
 	public List<Motorista> load(int first, int pageSize, String sortField, SortOrder sortOrder,
-			Map<String, String> filters) {
+			Map<String, Object> filters) {
 
 		List<Motorista> motoristas = this.motoristaDAO.buscarComPaginacao(first, pageSize);
-
 		this.setRowCount(this.motoristaDAO.encontrarQuantidadeDeFuncionarios().intValue());
-
 		return motoristas;
-
 	}
 
 }

@@ -23,14 +23,11 @@ public class LazyFuncionarioDataModel extends LazyDataModel<Funcionario> impleme
 
 	@Override
 	public List<Funcionario> load(int first, int pageSize, String sortField, SortOrder sortOrder,
-			Map<String, String> filters) {
+			Map<String, Object> filters) {
 
 		List<Funcionario> funcionarios = this.funcionarioDAO.buscarComPaginacao(first, pageSize);
-
 		this.setRowCount(this.funcionarioDAO.encontrarQuantidadeDeFuncionarios().intValue());
-
 		return funcionarios;
-
 	}
 
 }
