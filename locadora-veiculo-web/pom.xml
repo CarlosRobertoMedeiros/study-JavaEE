@@ -46,9 +46,10 @@
 		
 		<!-- JUnit -->
 		<junit.version>4.11</junit.version>
+
+		<!-- Implementação do Bean Validator -->
+		<hibernate-validator>6.1.0.Final</hibernate-validator>
 		
-		
-		<junit.version>4.10</junit.version>
 	</properties>
 	
 	<build>
@@ -177,6 +178,14 @@
 		    <version>${junit.version}</version>
 		    <scope>test</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>${hibernate-validator}</version>
+		</dependency>
+		
 		
 	</dependencies>
 
