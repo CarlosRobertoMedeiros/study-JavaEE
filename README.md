@@ -66,6 +66,14 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 			
 			- Implementando Consultas
 				- Utilizando Criteria
+			
+			- Novidades do JPA 2.1
+				- Utilizando converters para tipo de dados data
+				- Utilizando o Criteria para Update
+				- Utilizando o Criteria para Delete
+			
+			- Novidades do JPA 2.2
+				- Implementações do LocalDate resolvidas ....
 
 
 	Implementação de Exemplos Simples de Padrões de Projetos JAVA EE
