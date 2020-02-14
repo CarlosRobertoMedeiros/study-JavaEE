@@ -67,6 +67,14 @@ Revisão De Assuntos Java referentes a JAVA EE7 e JakartaEE8
 			- Implementando Consultas
 				- Utilizando Criteria
 			
+			- Implementando Cache
+				- Cache de Primeiro Nível
+				- Cache de Segundo Nível
+				- Cache de Coleções
+				- Cache de Consulta(Query)
+				- Cache com EhCache
+				- Cache com Infinity Span, JTA no Wildfly
+				
 			- Novidades do JPA 2.1
 				- Utilizando converters para tipo de dados data
 				- Utilizando o Criteria para Update
