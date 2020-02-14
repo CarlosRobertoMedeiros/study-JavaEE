@@ -10,7 +10,7 @@ public class GerarTabelas {
 			EntityManagerFactory emf = JPAUtil.createEntityManager().getEntityManagerFactory();
 			EntityManager manager = emf.createEntityManager();
 
-			manager.close();
+			manager.close(); 
 			//emf.close();
 			System.out.println(">>>>> Tabelas geradas com sucesso! <<<<<<<");
 			System.exit(0);
