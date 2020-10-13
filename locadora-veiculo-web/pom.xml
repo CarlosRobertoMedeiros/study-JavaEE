@@ -45,7 +45,7 @@
 		<commons-lang3.version>3.4</commons-lang3.version>
 		
 		<!-- JUnit -->
-		<junit.version>4.11</junit.version>
+		<junit.version>4.13.1</junit.version>
 
 		<!-- Implementação do Bean Validator -->
 		<hibernate-validator>6.1.0.Final</hibernate-validator>
