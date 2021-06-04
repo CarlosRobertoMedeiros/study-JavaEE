@@ -48,7 +48,7 @@
 		<junit.version>4.11</junit.version>
 
 		<!-- Implementação do Bean Validator -->
-		<hibernate-validator>6.1.0.Final</hibernate-validator>
+		<hibernate-validator>6.1.5.Final</hibernate-validator>
 		
 	</properties>
 	
